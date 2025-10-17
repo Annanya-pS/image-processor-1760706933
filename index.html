@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display App</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #fff;
+        }
+        .container {
+            max-width: 900px;
+        }
+        img.full-width {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-4">
+            <h1 class="mb-4 text-center">Image Display App</h1>
+            <form class="mb-3">
+                <div class="mb-3">
+                    <label for="num1" class="form-label">Number 1</label>
+                    <input type="number" class="form-control" id="num1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="num2" class="form-label">Number 2</label>
+                    <input type="number" class="form-control" id="num2" required>
+                </div>
+                <button type="button" class="btn btn-primary" id="calculate-btn">Calculate</button>
+            </form>
+            <div id="result" class="alert alert-info" role="alert" style="visibility: hidden;">Result: <span></span></div>
+            <div id="image-display">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAADSCAMAAABThmYtAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBBBykAAc7m2IkAAAAASUVORK5CYII=" alt="Sample">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            try {
+                let num1 = parseFloat(document.getElementById('num1').value);
+                let num2 = parseFloat(document.getElementById('num2').value);
+                let sum = num1 + num2;
+                document.querySelector('#result span').textContent = sum;
+                document.getElementById('result').style.visibility = 'visible';
+            } catch (error) {
+                console.error("Error in calculation:", error);
+                alert("Input values must be numbers.");
+            }
+        });
+    </script>
+</body>
+</html>
